@@ -11,22 +11,6 @@ img {
   clear: both;
 }
 
-/* Top Section */
-.wrap .top {
-  align-items: center;
-  background-color: #fff;
-  border-bottom: 1px solid var(--gray20);
-  display: flex;
-  font-size: 18px;
-  font-weight: 700;
-  height: 56px;
-}
-
-.wrap .top img {
-  height: 24px;
-  margin: 0 8px 0 16px;
-}
-
 /* Tab Section */
 .wrap .tab {
   align-items: center;

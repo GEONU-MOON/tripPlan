@@ -1,4 +1,3 @@
-/* Login Page Styles */
 .login-container {
   text-align: center;
   padding: 40px 20px;
@@ -6,22 +5,26 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 400px;
+  max-width: 380px;
   width: 100%;
   box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .login-container .logo {
   margin-bottom: 24px;
-  width: 140px;
+  width: 100px;
 }
 
-.login-container h2 {
-  font-size: 16px;
-  font-weight: 400;
+.login-title {
+  font-size: 32px;
+  font-weight: 800;
   line-height: 1.5;
   color: var(--gray110);
   margin-bottom: 32px;
+  text-align: center;
 }
 
 .login-buttons {
@@ -62,18 +65,31 @@
   margin-right: 8px;
 }
 
+.kakao-btn img,
+.naver-btn img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
 .login-info {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--gray90);
+  display: flex;
+  align-items: flex-start;
 }
 
-.login-info p {
-  margin: 6px 0;
+.login-info .info-icon {
+  margin-right: 4px;
+  line-height: 1.5;
+  margin-top: 4px;
 }
 
-.login-info span {
-  font-weight: 700;
-  color: var(--gray110);
+.login-info .info-text {
+  margin: 0;
+  text-align: start;
+  line-height: 1.5;
+  display: inline-block;
 }
 
 .login-info a {

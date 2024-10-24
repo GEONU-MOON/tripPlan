@@ -3,14 +3,92 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel Itinerary Overview</title>
+    <title>tripPlan</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="icon" href="../img/favicon.png" type="image/x-icon" />
   </head>
   <body>
     <div class="wrap">
-      <div class="top"><img src="../img/logo.svg" alt="Logo" /> 트립 플랜</div>
+      <div class="top"><img src="../img/logo.svg" alt="Logo" /> 트립플랜</div>
       <div class="tab"></div>
+      <div class="list">
+        <!-- 여행 리스트 -->
+        <ul class="default" id="trip-item">
+          <div class="info">
+            <li class="date">2024-10-24 ~ 2024-10-25</li>
+            <li class="title">뉴욕 여행</li>
+            <li class="txt">뉴욕의 숨은 명소 투어</li>
+          </div>
+          <div class="thumb">
+            <div class="box">
+              <img
+                src="https://www.usj.co.jp/tridiondata/usj/ko/kr/files/images/gds-images/usj-gds-new-york-transparent-logo-b.png"
+                alt="Thumbnail 1"
+              />
+            </div>
+          </div>
+          <div class="link">
+            <!-- 태그 영역 -->
+            <div class="tag-container">
+              <li class="default">
+                <a
+                  href="https://example.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >태그 1</a
+                >
+              </li>
+              <li class="default">
+                <a
+                  href="https://example.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >태그 2</a
+                >
+              </li>
+              <!-- 더 많은 태그들 -->
+            </div>
+
+            <!-- 수정 및 삭제 아이콘 -->
+            <div class="action-buttons">
+              <button class="edit-btn">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button class="delete-btn">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div class="register-btn-container">
+        <button class="register-btn">
+          <i class="fa fa-plus-circle"></i> 등록
+        </button>
+      </div>
     </div>
+    <script>
+      // ul 전체에 클릭 이벤트 추가
+      document
+        .getElementById("trip-item")
+        .addEventListener("click", function () {
+          window.location.href = "travel_itinerary_management.html"; // 이동할 페이지 경로
+        });
+
+      // 태그나 버튼을 클릭할 때는 페이지 이동을 방지
+      const tags = document.querySelectorAll(
+        ".tag-container a, .edit-btn, .delete-btn"
+      );
+      tags.forEach((tag) => {
+        tag.addEventListener("click", function (event) {
+          event.stopPropagation(); // 클릭 이벤트 전파 방지
+        });
+      });
+    </script>
   </body>
 </html>

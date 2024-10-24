@@ -1,88 +1,198 @@
-/* Header */
-.header {
-  background-color: var(--white);
-  padding: 16px;
-  border-bottom: 1px solid var(--gray30);
-  text-align: center;
+.wrap .list {
+  padding: 8px 0 0;
 }
 
-.header-content {
+.wrap .list ul {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -2px #1018280a;
+  margin: 0 8px 8px;
+  min-height: 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+.wrap .list .default {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrap .list .default .info {
+  padding: 0 0 0 16px;
+  width: calc(100% - 96px);
+}
+
+.wrap .list .default .info .date {
+  color: var(--gray50);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 0 0;
+}
+
+.wrap .list .default .info .title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 0 0 4px;
+}
+
+.wrap .list .default .info .txt {
+  color: var(--gray60);
+  font-size: 13px;
+  line-height: 16px;
+  padding: 0 0 10px;
+}
+
+.wrap .list .default .thumb {
+  position: relative;
+  width: 80px;
+}
+
+.wrap .list .default .thumb .qty {
+  background-color: var(--blue100);
+  border-radius: 18px;
+  color: #fff;
+  font-size: 11px;
+  height: 18px;
+  line-height: 18px;
+  position: absolute;
+  right: 8px;
+  text-align: center;
+  top: 8px;
+  width: 18px;
+  z-index: 50;
+}
+
+.wrap .list .default .thumb .box {
+  border-radius: 8px;
+  cursor: pointer;
+  height: 50px;
+  overflow: hidden;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 50px;
+}
+
+.wrap .list .default .thumb .box img {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.wrap .list .default .thumb .box img:first-child {
+  z-index: 30;
+}
+
+.wrap .list .default .link {
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--gray10);
+  display: flex;
+  height: 36px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.wrap .list .default .link::-webkit-scrollbar {
+  display: none;
+}
+
+.wrap .list .default .link li {
+  background-color: #fff;
+  border: 1px solid var(--gray30);
+  border-radius: 100px;
+  color: var(--gray50);
+  cursor: pointer;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+
+  padding: 0 8px;
+}
+
+.wrap .list .default .link li:first-child {
+  margin-left: 8px;
+}
+
+/* 등록 버튼 스타일 */
+.wrap .register-btn-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 8px;
+  padding: 16px;
 }
 
-.header-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.header-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--gray120);
-}
-
-/* Itinerary Overview */
-.home-overview {
-  padding: 20px;
-}
-
-.itinerary-summary h2 {
+/* 그라데이션 버튼 스타일 */
+.wrap .register-btn {
+  background: linear-gradient(90deg, #00b4db, #0083b0);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
   font-size: 16px;
-  color: var(--gray120);
-  margin-bottom: 16px;
+  padding: 10px 24px;
+  transition: background 0.3s ease;
 }
 
-.itinerary-list {
-  list-style-type: none;
+.wrap .register-btn:hover {
+  background: linear-gradient(90deg, #0083b0, #00b4db);
+}
+
+/* .link의 display를 flex로 설정 */
+.wrap .list .link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* 태그 영역 설정 */
+.wrap .list .link .tag-container {
+  display: flex;
+  flex-wrap: wrap; /* 태그 여러 개가 생길 경우 줄바꿈 가능 */
+  gap: 8px; /* 태그 간의 간격 조정 */
+  flex-grow: 1; /* 태그가 공간을 차지하도록 설정 */
+}
+
+.wrap .list .link .tag-container li {
+  background-color: #fff;
+  border: 1px solid var(--gray30);
+  border-radius: 100px;
+  color: var(--gray50);
+  cursor: pointer;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 8px;
+}
+
+/* 수정 및 삭제 버튼 고정 위치 설정 */
+.wrap .list .action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 8px;
+}
+
+.wrap .list .action-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
   padding: 0;
 }
 
-.itinerary-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--gray30);
-}
-
-.itinerary-item .date {
-  font-size: 14px;
-  color: var(--gray110);
-}
-
-.itinerary-item .details {
-  font-size: 14px;
-  color: var(--gray90);
-}
-
-/* No Data State */
-.no-data {
-  text-align: center;
-  padding: 20px;
-  background-color: var(--gray10);
-  border-radius: 8px;
-  margin-top: 20px;
-}
-
-.no-data p {
-  font-size: 14px;
-  color: var(--gray90);
-  margin-bottom: 16px;
-}
-
-.add-schedule-btn {
-  background-color: var(--blue100);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: none;
+.wrap .list .action-buttons button i {
   font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  color: var(--gray50);
 }
 
-.add-schedule-btn:hover {
-  background-color: var(--blue80);
+.wrap .list .action-buttons .edit-btn:hover i {
+  color: var(--blue100); /* 수정 버튼 호버 효과 */
+}
+
+.wrap .list .action-buttons .delete-btn:hover i {
+  color: red; /* 삭제 버튼 호버 효과 */
 }

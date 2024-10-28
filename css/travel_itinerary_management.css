@@ -230,6 +230,20 @@ img {
   content: "\21E2";
 }
 
+/* 태그 스타일 */
+.link .tag {
+  background-color: #f0f4f8;
+  color: #007bff;
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+  margin: 4px 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 /* 팝업 오버레이 */
 .popup-overlay {
   display: none;

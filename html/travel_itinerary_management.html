@@ -86,6 +86,13 @@
               >이미지 URL:
               <input type="text" id="default-img" placeholder="이미지 URL 입력"
             /></label>
+            <label
+              >해시태그:
+              <input
+                type="text"
+                id="default-tags"
+                placeholder="태그 입력 (쉼표로 구분)"
+            /></label>
             <button onclick="addDefaultItem()">일반 항목 추가</button>
           </div>
           <button onclick="closePopup()">닫기</button>
@@ -159,6 +166,10 @@
         ).value;
         const qty = document.getElementById("default-qty").value;
         const imgURL = document.getElementById("default-img").value;
+        const tags = document
+          .getElementById("default-tags")
+          .value.split(",")
+          .map((tag) => tag.trim());
 
         const itemList = document.getElementById("item-list");
         const newItem = document.createElement("ul");
@@ -174,6 +185,9 @@
             <div class="box">
               <img src="${imgURL}" alt="Thumbnail" />
             </div>
+          </div>
+          <div class="link">
+            ${tags.map((tag) => `<span class="tag">#${tag}</span>`).join("")}
           </div>
         `;
         itemList.appendChild(newItem);

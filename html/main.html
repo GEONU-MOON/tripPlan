@@ -22,7 +22,8 @@
           <div
             class="info"
             data-title="뉴욕 여행"
-            data-date="2024-10-24"
+            data-start-date="2024-10-24"
+            data-end-date="2024-10-25"
             data-description="뉴욕의 숨은 명소 투어"
           >
             <li class="date">2024-10-24 ~ 2024-10-25</li>
@@ -78,8 +79,11 @@
           <label for="trip-title">여행 제목</label>
           <input type="text" id="trip-title" placeholder="여행 제목 입력" />
 
-          <label for="trip-date">여행 날짜</label>
-          <input type="date" id="trip-date" />
+          <label for="trip-start-date">여행 시작일</label>
+          <input type="date" id="trip-start-date" />
+
+          <label for="trip-end-date">여행 종료일</label>
+          <input type="date" id="trip-end-date" />
 
           <label for="trip-description">여행 설명</label>
           <textarea
@@ -107,7 +111,8 @@
       const popup = document.getElementById("popup");
       const popupTitle = document.getElementById("popup-title");
       const tripTitleInput = document.getElementById("trip-title");
-      const tripDateInput = document.getElementById("trip-date");
+      const tripStartDateInput = document.getElementById("trip-start-date");
+      const tripEndDateInput = document.getElementById("trip-end-date");
       const tripDescriptionInput = document.getElementById("trip-description");
 
       // 등록 버튼 클릭 시
@@ -116,7 +121,8 @@
         .addEventListener("click", function () {
           popupTitle.textContent = "새로운 여행 등록";
           tripTitleInput.value = "";
-          tripDateInput.value = "";
+          tripStartDateInput.value = "";
+          tripEndDateInput.value = "";
           tripDescriptionInput.value = "";
           popup.style.display = "flex";
         });
@@ -127,12 +133,14 @@
           event.stopPropagation();
           const info = button.closest(".default").querySelector(".info");
           const title = info.getAttribute("data-title");
-          const date = info.getAttribute("data-date");
+          const startDate = info.getAttribute("data-start-date");
+          const endDate = info.getAttribute("data-end-date");
           const description = info.getAttribute("data-description");
 
           popupTitle.textContent = "여행 수정";
           tripTitleInput.value = title;
-          tripDateInput.value = date;
+          tripStartDateInput.value = startDate;
+          tripEndDateInput.value = endDate;
           tripDescriptionInput.value = description;
           popup.style.display = "flex";
         });

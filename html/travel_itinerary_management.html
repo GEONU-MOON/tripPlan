@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/travel_itinerary_management.css" />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="icon" href="../img/favicon.png" type="image/x-icon" />
-    <style></style>
   </head>
   <body>
     <div class="wrap">
@@ -39,6 +38,16 @@
 
           <!-- 이동 항목 폼 -->
           <div id="move-form" class="item-form" style="display: none">
+            <label for="transport-type">이동 수단 선택:</label>
+            <select id="transport-type">
+              <option value="plane_start">비행기 이륙</option>
+              <option value="plane_end">비행기 착륙</option>
+              <option value="bus">버스</option>
+              <option value="subway">열차</option>
+              <option value="taxi">택시</option>
+              <option value="walk">걷기</option>
+              <option value="boat">보트</option>
+            </select>
             <label>시간: <input type="time" id="move-time" /></label>
             <label
               >출발지:
@@ -116,6 +125,7 @@
 
       // 이동 항목 추가 함수
       function addMoveItem() {
+        const transportType = document.getElementById("transport-type").value;
         const time = document.getElementById("move-time").value;
         const title = document.getElementById("move-title").value;
         const description = document.getElementById("move-description").value;
@@ -125,7 +135,7 @@
         const newItem = document.createElement("ul");
         newItem.className = "move";
         newItem.innerHTML = `
-          <div class="ico"><img src="../img/plane_start.svg" /></div>
+          <div class="ico"><img src="../img/${transportType}.svg" /></div>
           <div class="price">$${price}</div>
           <div class="info">
             <li class="date">${time}</li>

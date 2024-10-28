@@ -243,6 +243,7 @@ img {
   align-items: center;
   z-index: 1000;
 }
+
 .popup-content {
   background: white;
   padding: 20px;
@@ -252,13 +253,16 @@ img {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
+
 .popup-content h3 {
   font-size: 20px;
   margin-bottom: 20px;
   color: #333;
 }
+
 /* 드롭다운 스타일 */
-#item-type {
+#item-type,
+#transport-type {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -267,6 +271,7 @@ img {
   border-radius: 4px;
   background-color: #f3f4f6;
 }
+
 /* 폼 요소 스타일 */
 .item-form label {
   display: block;
@@ -275,6 +280,7 @@ img {
   text-align: left;
   color: #555;
 }
+
 .item-form input {
   width: calc(100% - 22px);
   padding: 8px 10px;
@@ -283,6 +289,7 @@ img {
   border-radius: 4px;
   font-size: 14px;
 }
+
 .item-form button {
   background-color: #007bff;
   color: white;
@@ -293,9 +300,11 @@ img {
   cursor: pointer;
   margin-top: 10px;
 }
+
 .item-form button:hover {
   background-color: #0056b3;
 }
+
 /* 닫기 버튼 스타일 */
 .popup-content > button {
   background-color: #ccc;
@@ -307,13 +316,14 @@ img {
   cursor: pointer;
   margin-top: 20px;
 }
+
 .popup-content > button:hover {
   background-color: #999;
 }
 
 /* .wrap 내부 고정 버튼 스타일 */
 .wrap {
-  position: relative; /* 부모 요소의 위치 기준 */
+  position: relative;
 }
 
 .floating-btn {
@@ -332,6 +342,7 @@ img {
   justify-content: center;
   transition: background-color 0.3s;
 }
+
 .floating-btn:hover {
   background-color: #0056b3;
 }

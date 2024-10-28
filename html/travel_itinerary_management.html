@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/travel_itinerary_management.css" />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="icon" href="../img/favicon.png" type="image/x-icon" />
+    <style></style>
   </head>
   <body>
     <div class="wrap">
@@ -22,45 +23,155 @@
         </ul>
       </div>
 
-      <div class="list">
-        <!-- 첫 번째 항목 (이동) -->
-        <ul class="move">
-          <div class="ico"><img src="../img/plane_start.svg" /></div>
-          <div class="price">$150</div>
-          <div class="info">
-            <li class="date">08:00</li>
-            <li class="title">출발지에서 출발</li>
-            <li class="txt">서울에서 뉴욕까지</li>
+      <!-- 오른쪽 하단 고정 버튼 -->
+      <div class="floating-btn" id="openPopupBtn">+</div>
+
+      <!-- 팝업 오버레이 -->
+      <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+          <h3>항목 추가</h3>
+          <label for="item-type">항목 유형 선택:</label>
+          <select id="item-type">
+            <option value="">선택</option>
+            <option value="move">이동</option>
+            <option value="default">일반</option>
+          </select>
+
+          <!-- 이동 항목 폼 -->
+          <div id="move-form" class="item-form" style="display: none">
+            <label>시간: <input type="time" id="move-time" /></label>
+            <label
+              >출발지:
+              <input type="text" id="move-title" placeholder="출발지 입력"
+            /></label>
+            <label
+              >설명:
+              <input type="text" id="move-description" placeholder="설명 입력"
+            /></label>
+            <label
+              >가격:
+              <input type="number" id="move-price" placeholder="가격 입력"
+            /></label>
+            <button onclick="addMoveItem()">이동 항목 추가</button>
           </div>
-        </ul>
-        <!-- 두 번째 항목 (일반) -->
-        <ul class="default">
-          <div class="info">
-            <li class="date">10:00</li>
-            <li class="title">관광지 방문</li>
-            <li class="txt">유명한 랜드마크 투어</li>
+
+          <!-- 일반 항목 폼 -->
+          <div id="default-form" class="item-form" style="display: none">
+            <label>시간: <input type="time" id="default-time" /></label>
+            <label
+              >제목:
+              <input type="text" id="default-title" placeholder="제목 입력"
+            /></label>
+            <label
+              >설명:
+              <input
+                type="text"
+                id="default-description"
+                placeholder="설명 입력"
+            /></label>
+            <label
+              >수량:
+              <input type="number" id="default-qty" placeholder="수량 입력"
+            /></label>
+            <label
+              >이미지 URL:
+              <input type="text" id="default-img" placeholder="이미지 URL 입력"
+            /></label>
+            <button onclick="addDefaultItem()">일반 항목 추가</button>
           </div>
-          <div class="thumb">
-            <div class="qty">2</div>
-            <div class="box">
-              <img
-                src="https://blog.kakaocdn.net/dn/n9jwo/btsisNXFIFA/U1h0H0GrmpX7m9HkDSbRz1/img.png"
-                alt="Thumbnail 1"
-              />
-            </div>
-          </div>
-          <div class="link">
-            <li class="default">
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                >태그 1</a
-              >
-            </li>
-          </div>
-        </ul>
+          <button onclick="closePopup()">닫기</button>
+        </div>
+      </div>
+
+      <div class="list" id="item-list">
+        <!-- 항목들이 추가될 리스트 -->
       </div>
     </div>
+
+    <script>
+      const popup = document.getElementById("popup");
+
+      // 팝업 열기
+      document
+        .getElementById("openPopupBtn")
+        .addEventListener("click", function () {
+          popup.style.display = "flex";
+        });
+
+      // 팝업 닫기
+      function closePopup() {
+        popup.style.display = "none";
+      }
+
+      // 항목 유형 선택 시 폼 표시
+      document
+        .getElementById("item-type")
+        .addEventListener("change", function () {
+          const itemType = this.value;
+          document.getElementById("move-form").style.display =
+            itemType === "move" ? "block" : "none";
+          document.getElementById("default-form").style.display =
+            itemType === "default" ? "block" : "none";
+        });
+
+      // 이동 항목 추가 함수
+      function addMoveItem() {
+        const time = document.getElementById("move-time").value;
+        const title = document.getElementById("move-title").value;
+        const description = document.getElementById("move-description").value;
+        const price = document.getElementById("move-price").value;
+
+        const itemList = document.getElementById("item-list");
+        const newItem = document.createElement("ul");
+        newItem.className = "move";
+        newItem.innerHTML = `
+          <div class="ico"><img src="../img/plane_start.svg" /></div>
+          <div class="price">$${price}</div>
+          <div class="info">
+            <li class="date">${time}</li>
+            <li class="title">${title}</li>
+            <li class="txt">${description}</li>
+          </div>
+        `;
+        itemList.appendChild(newItem);
+
+        // 폼 초기화 및 팝업 닫기
+        document.getElementById("move-form").reset();
+        closePopup();
+      }
+
+      // 일반 항목 추가 함수
+      function addDefaultItem() {
+        const time = document.getElementById("default-time").value;
+        const title = document.getElementById("default-title").value;
+        const description = document.getElementById(
+          "default-description"
+        ).value;
+        const qty = document.getElementById("default-qty").value;
+        const imgURL = document.getElementById("default-img").value;
+
+        const itemList = document.getElementById("item-list");
+        const newItem = document.createElement("ul");
+        newItem.className = "default";
+        newItem.innerHTML = `
+          <div class="info">
+            <li class="date">${time}</li>
+            <li class="title">${title}</li>
+            <li class="txt">${description}</li>
+          </div>
+          <div class="thumb">
+            <div class="qty">${qty}</div>
+            <div class="box">
+              <img src="${imgURL}" alt="Thumbnail" />
+            </div>
+          </div>
+        `;
+        itemList.appendChild(newItem);
+
+        // 폼 초기화 및 팝업 닫기
+        document.getElementById("default-form").reset();
+        closePopup();
+      }
+    </script>
   </body>
 </html>

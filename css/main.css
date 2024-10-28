@@ -98,7 +98,7 @@
 .wrap .list .default .action-buttons {
   display: flex;
   gap: 12px;
-  margin-left: auto;
+  margin: 0 auto;
 }
 
 .wrap .list .default .action-buttons button {

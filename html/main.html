@@ -25,6 +25,7 @@
             data-start-date="2024-10-24"
             data-end-date="2024-10-25"
             data-description="뉴욕의 숨은 명소 투어"
+            data-tags="태그 1,태그 2"
           >
             <li class="date">2024-10-24 ~ 2024-10-25</li>
             <li class="title">뉴욕 여행</li>
@@ -38,22 +39,8 @@
           </div>
           <div class="link">
             <div class="tag-container">
-              <li class="default">
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >태그 1</a
-                >
-              </li>
-              <li class="default">
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >태그 2</a
-                >
-              </li>
+              <span class="tag">#태그 1</span>
+              <span class="tag">#태그 2</span>
             </div>
           </div>
           <div class="action-buttons">
@@ -114,6 +101,7 @@
       const tripStartDateInput = document.getElementById("trip-start-date");
       const tripEndDateInput = document.getElementById("trip-end-date");
       const tripDescriptionInput = document.getElementById("trip-description");
+      const tripTagsInput = document.getElementById("trip-tags");
 
       // 등록 버튼 클릭 시
       document
@@ -124,8 +112,16 @@
           tripStartDateInput.value = "";
           tripEndDateInput.value = "";
           tripDescriptionInput.value = "";
+          tripTagsInput.value = ""; // 태그 필드 초기화
           popup.style.display = "flex";
         });
+
+      // 카드 클릭 시 다른 페이지로 이동
+      document.querySelectorAll(".default").forEach((card) => {
+        card.addEventListener("click", function () {
+          window.location.href = "travel_itinerary_management.html";
+        });
+      });
 
       // 수정 버튼 클릭 시
       document.querySelectorAll(".edit-btn").forEach((button) => {
@@ -136,12 +132,16 @@
           const startDate = info.getAttribute("data-start-date");
           const endDate = info.getAttribute("data-end-date");
           const description = info.getAttribute("data-description");
+          const tags = info.getAttribute("data-tags");
 
           popupTitle.textContent = "여행 수정";
           tripTitleInput.value = title;
           tripStartDateInput.value = startDate;
           tripEndDateInput.value = endDate;
           tripDescriptionInput.value = description;
+
+          // 태그 입력 필드에 태그 문자열 설정
+          tripTagsInput.value = tags;
           popup.style.display = "flex";
         });
       });
@@ -153,9 +153,9 @@
           popup.style.display = "none";
         });
 
-      // 태그 클릭 방지
+      // 태그 및 수정, 삭제 버튼 클릭 시 카드 클릭 이벤트 방지
       const tags = document.querySelectorAll(
-        ".tag-container a, .edit-btn, .delete-btn"
+        ".tag-container .tag, .edit-btn, .delete-btn"
       );
       tags.forEach((tag) => {
         tag.addEventListener("click", function (event) {

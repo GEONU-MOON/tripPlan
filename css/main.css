@@ -80,6 +80,21 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.wrap .list .default .link .tag-container .tag {
+  background-color: #f3f4f6;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  color: #555;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 6px 10px;
+  transition: background 0.3s ease;
+}
+
+.wrap .list .default .link .tag-container .tag:hover {
+  background-color: #ddd;
+}
+
 .wrap .list .default .link li {
   background-color: #f3f4f6;
   border: 1px solid #ddd;

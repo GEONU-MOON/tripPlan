@@ -15,7 +15,7 @@
   <body>
     <div class="wrap">
       <div class="top"><img src="../img/logo.svg" alt="Logo" /> 트립플랜</div>
-      <div class="tab"></div>
+
       <div class="list">
         <!-- 여행 리스트 -->
         <ul class="default" id="trip-item">
@@ -25,12 +25,10 @@
             <li class="txt">뉴욕의 숨은 명소 투어</li>
           </div>
           <div class="thumb">
-            <div class="box">
-              <img
-                src="https://www.usj.co.jp/tridiondata/usj/ko/kr/files/images/gds-images/usj-gds-new-york-transparent-logo-b.png"
-                alt="Thumbnail 1"
-              />
-            </div>
+            <img
+              src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/6204f3a9-7443-4913-8779-1028949ac5d4.jpeg"
+              alt="Thumbnail 1"
+            />
           </div>
           <div class="link">
             <!-- 태그 영역 -->
@@ -51,7 +49,6 @@
                   >태그 2</a
                 >
               </li>
-              <!-- 더 많은 태그들 -->
             </div>
 
             <!-- 수정 및 삭제 아이콘 -->
@@ -67,28 +64,71 @@
         </ul>
       </div>
       <div class="register-btn-container">
-        <button class="register-btn">
+        <button class="register-btn" id="openPopupBtn">
           <i class="fa fa-plus-circle"></i> 등록
         </button>
       </div>
     </div>
+    <div class="popup-overlay" id="popup">
+      <div class="popup-content">
+        <h2>새로운 여행 등록</h2>
+        <form>
+          <label for="trip-title">여행 제목</label>
+          <input type="text" id="trip-title" placeholder="여행 제목 입력" />
+
+          <label for="trip-date">여행 날짜</label>
+          <input type="date" id="trip-date" />
+
+          <label for="trip-description">여행 설명</label>
+          <textarea
+            id="trip-description"
+            placeholder="여행 설명 입력"
+          ></textarea>
+
+          <label for="trip-tags">태그</label>
+          <input
+            type="text"
+            id="trip-tags"
+            placeholder="태그 입력 (쉼표로 구분)"
+          />
+
+          <div class="popup-buttons">
+            <button type="submit" class="submit-btn">등록</button>
+            <button type="button" class="close-btn" id="closePopupBtn">
+              닫기
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
     <script>
-      // ul 전체에 클릭 이벤트 추가
       document
         .getElementById("trip-item")
         .addEventListener("click", function () {
-          window.location.href = "travel_itinerary_management.html"; // 이동할 페이지 경로
+          window.location.href = "travel_itinerary_management.html";
         });
 
-      // 태그나 버튼을 클릭할 때는 페이지 이동을 방지
       const tags = document.querySelectorAll(
         ".tag-container a, .edit-btn, .delete-btn"
       );
       tags.forEach((tag) => {
         tag.addEventListener("click", function (event) {
-          event.stopPropagation(); // 클릭 이벤트 전파 방지
+          event.stopPropagation();
         });
       });
+    </script>
+    <script>
+      document
+        .getElementById("openPopupBtn")
+        .addEventListener("click", function () {
+          document.getElementById("popup").style.display = "flex";
+        });
+
+      document
+        .getElementById("closePopupBtn")
+        .addEventListener("click", function () {
+          document.getElementById("popup").style.display = "none";
+        });
     </script>
   </body>
 </html>

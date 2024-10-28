@@ -1,140 +1,137 @@
 .wrap .list {
-  padding: 8px 0 0;
+  padding: 16px 0;
 }
 
 .wrap .list ul {
   background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px -2px #1018280a;
-  margin: 0 8px 8px;
-  min-height: 80px;
-  overflow: hidden;
-  position: relative;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(16, 24, 40, 0.15); /* 그림자 강화 */
+  margin: 16px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: auto 100px;
+  grid-template-rows: auto 48px;
+  gap: 16px;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* 애니메이션 추가 */
 }
 
-.wrap .list .default {
-  display: flex;
-  flex-wrap: wrap;
+.wrap .list ul:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(16, 24, 40, 0.2);
 }
 
 .wrap .list .default .info {
-  padding: 0 0 0 16px;
-  width: calc(100% - 96px);
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
 .wrap .list .default .info .date {
   color: var(--gray50);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  padding: 6px 0 0;
+  margin-bottom: 4px;
 }
 
 .wrap .list .default .info .title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 24px;
-  padding: 0 0 4px;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 8px;
 }
 
 .wrap .list .default .info .txt {
   color: var(--gray60);
-  font-size: 13px;
-  line-height: 16px;
-  padding: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .wrap .list .default .thumb {
-  position: relative;
-  width: 80px;
-}
-
-.wrap .list .default .thumb .qty {
-  background-color: var(--blue100);
-  border-radius: 18px;
-  color: #fff;
-  font-size: 11px;
-  height: 18px;
-  line-height: 18px;
-  position: absolute;
-  right: 8px;
-  text-align: center;
-  top: 8px;
-  width: 18px;
-  z-index: 50;
-}
-
-.wrap .list .default .thumb .box {
-  border-radius: 8px;
-  cursor: pointer;
-  height: 50px;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
   overflow: hidden;
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  width: 50px;
+  border: 2px solid #e0e0e0;
 }
 
-.wrap .list .default .thumb .box img {
-  height: 100%;
-  left: 0;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
+.wrap .list .default .thumb img {
   width: 100%;
-}
-
-.wrap .list .default .thumb .box img:first-child {
-  z-index: 30;
+  height: 100%;
+  object-fit: cover; /* 여백 없이 꽉 차게 */
+  object-position: center; /* 이미지 중앙 정렬 */
 }
 
 .wrap .list .default .link {
-  -webkit-overflow-scrolling: touch;
-  background-color: var(--gray10);
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
   display: flex;
-  height: 36px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  width: 100%;
+  gap: 10px;
+  align-items: center;
 }
 
-.wrap .list .default .link::-webkit-scrollbar {
-  display: none;
+.wrap .list .default .link .tag-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .wrap .list .default .link li {
-  background-color: #fff;
-  border: 1px solid var(--gray30);
-  border-radius: 100px;
-  color: var(--gray50);
+  background-color: #f3f4f6;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  color: #555;
   cursor: pointer;
-  font-size: 12px;
-  height: 20px;
-  line-height: 20px;
-
-  padding: 0 8px;
+  font-size: 13px;
+  padding: 6px 10px;
+  transition: background 0.3s ease;
 }
 
-.wrap .list .default .link li:first-child {
-  margin-left: 8px;
+.wrap .list .default .link li:hover {
+  background-color: #ddd;
+}
+
+.wrap .list .default .action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.wrap .list .default .action-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--gray50);
+}
+
+.wrap .list .default .action-buttons .edit-btn:hover {
+  color: var(--blue100);
+}
+
+.wrap .list .default .action-buttons .delete-btn:hover {
+  color: red;
 }
 
 /* 등록 버튼 스타일 */
 .wrap .register-btn-container {
   display: flex;
   justify-content: center;
-  padding: 16px;
+  padding: 24px;
 }
 
-/* 그라데이션 버튼 스타일 */
 .wrap .register-btn {
   background: linear-gradient(90deg, #00b4db, #0083b0);
   border: none;
   border-radius: 50px;
   color: white;
   cursor: pointer;
-  font-size: 16px;
-  padding: 10px 24px;
+  font-size: 18px;
+  padding: 12px 32px;
   transition: background 0.3s ease;
 }
 
@@ -142,57 +139,87 @@
   background: linear-gradient(90deg, #0083b0, #00b4db);
 }
 
-/* .link의 display를 flex로 설정 */
-.wrap .list .link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* 팝업 배경 및 중앙 정렬 */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* 태그 영역 설정 */
-.wrap .list .link .tag-container {
-  display: flex;
-  flex-wrap: wrap; /* 태그 여러 개가 생길 경우 줄바꿈 가능 */
-  gap: 8px; /* 태그 간의 간격 조정 */
-  flex-grow: 1; /* 태그가 공간을 차지하도록 설정 */
-}
-
-.wrap .list .link .tag-container li {
+.popup-content {
   background-color: #fff;
-  border: 1px solid var(--gray30);
-  border-radius: 100px;
-  color: var(--gray50);
-  cursor: pointer;
-  font-size: 12px;
-  height: 20px;
-  line-height: 20px;
-  padding: 0 8px;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
 }
 
-/* 수정 및 삭제 버튼 고정 위치 설정 */
-.wrap .list .action-buttons {
+.popup-content h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.popup-content label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.popup-content input[type="text"],
+.popup-content input[type="date"],
+.popup-content textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.popup-content textarea {
+  resize: none;
+  height: 80px;
+}
+
+.popup-buttons {
   display: flex;
-  gap: 8px;
-  margin-right: 8px;
+  justify-content: space-between;
 }
 
-.wrap .list .action-buttons button {
-  background: none;
+.popup-buttons .submit-btn,
+.popup-buttons .close-btn {
+  padding: 8px 16px;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
-  padding: 0;
 }
 
-.wrap .list .action-buttons button i {
-  font-size: 16px;
-  color: var(--gray50);
+.popup-buttons .submit-btn {
+  background-color: #00b4db;
+  color: white;
 }
 
-.wrap .list .action-buttons .edit-btn:hover i {
-  color: var(--blue100); /* 수정 버튼 호버 효과 */
+.popup-buttons .close-btn {
+  background-color: #ccc;
+  color: black;
 }
 
-.wrap .list .action-buttons .delete-btn:hover i {
-  color: red; /* 삭제 버튼 호버 효과 */
+.popup-buttons .submit-btn:hover {
+  background-color: #0083b0;
+}
+
+.popup-buttons .close-btn:hover {
+  background-color: #999;
 }

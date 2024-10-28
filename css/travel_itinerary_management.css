@@ -370,3 +370,36 @@ img {
   margin-top: 20px;
   display: block; /* 초기 상태는 보이게 설정 */
 }
+
+/* Action Buttons */
+.action-buttons {
+  position: absolute;
+  top: 15px;
+  right: 80px;
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+  background-color: var(--blue100);
+}
+
+.delete-btn:hover {
+  background-color: red;
+}
+
+.edit-btn i,
+.delete-btn i {
+  font-size: 14px;
+  color: #333;
+}

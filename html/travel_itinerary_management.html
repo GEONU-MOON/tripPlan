@@ -102,11 +102,10 @@
       <div class="list" id="item-list">
         <!-- 항목들이 추가될 리스트 -->
       </div>
+      <p id="noItemsMessage" class="no-items-message">일정을 등록하세요</p>
     </div>
 
     <script>
-      const popup = document.getElementById("popup");
-
       // 팝업 열기
       document
         .getElementById("openPopupBtn")
@@ -130,6 +129,14 @@
             itemType === "default" ? "block" : "none";
         });
 
+      // 안내 메시지 토글 함수
+      function toggleNoItemsMessage() {
+        const itemList = document.getElementById("item-list");
+        const noItemsMessage = document.getElementById("noItemsMessage");
+        noItemsMessage.style.display =
+          itemList.children.length === 0 ? "block" : "none";
+      }
+
       // 이동 항목 추가 함수
       function addMoveItem() {
         const transportType = document.getElementById("transport-type").value;
@@ -142,19 +149,19 @@
         const newItem = document.createElement("ul");
         newItem.className = "move";
         newItem.innerHTML = `
-          <div class="ico"><img src="../img/${transportType}.svg" /></div>
-          <div class="price">$${price}</div>
-          <div class="info">
-            <li class="date">${time}</li>
-            <li class="title">${title}</li>
-            <li class="txt">${description}</li>
-          </div>
-        `;
+    <div class="ico"><img src="../img/${transportType}.svg" /></div>
+    <div class="price">$${price}</div>
+    <div class="info">
+      <li class="date">${time}</li>
+      <li class="title">${title}</li>
+      <li class="txt">${description}</li>
+    </div>
+  `;
         itemList.appendChild(newItem);
 
-        // 폼 초기화 및 팝업 닫기
-        document.getElementById("move-form").reset();
-        closePopup();
+        toggleNoItemsMessage(); // 안내 메시지 토글
+        document.getElementById("move-form").reset(); // 폼 초기화
+        closePopup(); // 팝업 닫기
       }
 
       // 일반 항목 추가 함수
@@ -175,26 +182,26 @@
         const newItem = document.createElement("ul");
         newItem.className = "default";
         newItem.innerHTML = `
-          <div class="info">
-            <li class="date">${time}</li>
-            <li class="title">${title}</li>
-            <li class="txt">${description}</li>
-          </div>
-          <div class="thumb">
-            <div class="qty">${qty}</div>
-            <div class="box">
-              <img src="${imgURL}" alt="Thumbnail" />
-            </div>
-          </div>
-          <div class="link">
-            ${tags.map((tag) => `<span class="tag">#${tag}</span>`).join("")}
-          </div>
-        `;
+    <div class="info">
+      <li class="date">${time}</li>
+      <li class="title">${title}</li>
+      <li class="txt">${description}</li>
+    </div>
+    <div class="thumb">
+      <div class="qty">${qty}</div>
+      <div class="box">
+        <img src="${imgURL}" alt="Thumbnail" />
+      </div>
+    </div>
+    <div class="link">
+      ${tags.map((tag) => `<span class="tag">#${tag}</span>`).join("")}
+    </div>
+  `;
         itemList.appendChild(newItem);
 
-        // 폼 초기화 및 팝업 닫기
-        document.getElementById("default-form").reset();
-        closePopup();
+        toggleNoItemsMessage(); // 안내 메시지 토글
+        document.getElementById("default-form").reset(); // 폼 초기화
+        closePopup(); // 팝업 닫기
       }
     </script>
   </body>
